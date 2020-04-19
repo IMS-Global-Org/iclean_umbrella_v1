@@ -7,5 +7,7 @@ defmodule ICleanWeb.Router do
 
   scope "/api", ICleanWeb do
     pipe_through :api
+
+    resources "/users", UsersController, except: [:new, :edit]
   end
 end

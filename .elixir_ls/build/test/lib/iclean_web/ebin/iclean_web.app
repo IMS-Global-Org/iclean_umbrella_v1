@@ -11,7 +11,8 @@
                         'Elixir.ICleanWeb.ErrorView',
                         'Elixir.ICleanWeb.Gettext','Elixir.ICleanWeb.Router',
                         'Elixir.ICleanWeb.Router.Helpers',
-                        'Elixir.ICleanWeb.UserSocket']},
+                        'Elixir.ICleanWeb.UserSocket',
+                        'Elixir.ICleanWeb.UsersController']},
               {registered,[]},
               {vsn,"0.1.0"},
               {mod,{'Elixir.ICleanWeb.Application',[]}}]}.
