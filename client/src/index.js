@@ -10,7 +10,7 @@ import 'semantic-ui-css/semantic.min.css'
 import './index.css';
 
 // Apps
-import App from './App';
+import Public from './apps/Public';
 import Admin from './apps/Admin'
 
 ReactDOM.render(
@@ -19,9 +19,9 @@ ReactDOM.render(
       <BrowserRouter>
         {/** Place App Routes Here */}
         <Switch>
-          <Route exact path='/' component={App} />
+          <Route exact path='/' component={Public} />
           <Route path='/admin' component={Admin} />
-          <Route component={App} />
+          <Route component={Public} />
         </Switch>
       </BrowserRouter>
     </Provider>

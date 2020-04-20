@@ -24,7 +24,7 @@ export const indexUsers = () => {
  * Reducers
  */
 const indexUsersReducer = (state, action) => {
-  return [...state, ...action.users]
+  return [...action.users]
 }
 
 // default state
