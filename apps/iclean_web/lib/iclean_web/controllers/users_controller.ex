@@ -6,6 +6,7 @@ defmodule ICleanWeb.UsersController do
 
   def index(conn, _params) do
     users = Repo.all(from u in User, select: %{
+      id: u.id,
       email: u.email, 
       types: u.types, 
       permissions: u.permissions

@@ -6,6 +6,7 @@ import store from './store'
 import * as serviceWorker from './serviceWorker';
 
 // Style Sheets
+import 'semantic-ui-css/semantic.min.css'
 import './index.css';
 
 // Apps
