@@ -5,7 +5,12 @@ defmodule ICleanWeb.UsersController do
   alias IClean.{Repo, User}
 
   def index(conn, _params) do
-    users = Repo.all(from u in User, select: [:email, :types, :permissions])
+    users = Repo.all(from u in User, select: %{
+      email: u.email, 
+      types: u.types, 
+      permissions: u.permissions
+    })
+    IO.inspect users
     json(conn, %{ users: users })
   end
 end

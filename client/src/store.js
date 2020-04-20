@@ -10,7 +10,7 @@ import axios from 'axios';
  *  axios
  *}
  */
-const client = axios.create({ //all axios can be used, shown in axios documentation
+const client = axios.create({ //all axios can be used
   baseURL:'http://localhost:4000/api',
   responseType: 'json'
 });
