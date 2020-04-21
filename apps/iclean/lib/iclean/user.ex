@@ -11,6 +11,8 @@ defmodule IClean.User do
     field :permissions, {:array, :string}
     field :types, {:array, :string}
 
+    many_to_many :addresses, IClean.Address, join_through: "users_addresses"
+
     timestamps()
   end
 
