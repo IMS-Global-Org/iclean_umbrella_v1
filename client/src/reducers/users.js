@@ -10,8 +10,7 @@ export const indexUsers = () => {
   return dispatch => {
     axios.get(`/api/users`)
       .then(res => {
-        const { users } = res.data
-        dispatch({ type: INDEX_USERS, users })
+        dispatch({ type: INDEX_USERS, ...res.data })
       })
       .catch(res => {
         console.log(res.message)
@@ -24,12 +23,21 @@ export const indexUsers = () => {
  * Reducers
  */
 const indexUsersReducer = (state, action) => {
-  return [...action.users]
+  return {
+    ...state,
+    users: action.users,
+    types: action.types,
+    permissions: action.permissions,
+  }
 }
 
 // default state
-const defaults = []
+const defaults = {
+  users: [],
+  types: [],
+  permissions: [],
+}
 
-export const users = createReducer([...defaults], {
+export const users = createReducer({...defaults}, {
   [INDEX_USERS]: indexUsersReducer,
 })
