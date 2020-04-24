@@ -11,11 +11,11 @@ const DeactivateUser = ({user, dispatch, ...rest}) => {
       setIsActive(user.active)
     }
   }
-  useEffect(updateIsActive, [user])
+  useEffect(updateIsActive, [])
 
   const onChange = (e, {name, checked}) => {
     setIsActive(checked)
-    dispatch(updateUser(user, { active: isActive }))
+    dispatch(updateUser(user, { active: checked }))
   }
 
   return (

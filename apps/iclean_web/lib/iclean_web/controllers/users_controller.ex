@@ -9,7 +9,8 @@ defmodule ICleanWeb.UsersController do
       id: u.id,
       email: u.email, 
       types: u.types, 
-      permissions: u.permissions
+      permissions: u.permissions,
+      active: u.active,
     })
 
     json(conn, %{ 
@@ -40,6 +41,7 @@ defmodule ICleanWeb.UsersController do
       email: user.email,
       types: user.types,
       permissions: user.permissions,
+      active: user.active,
     }
   end
 end

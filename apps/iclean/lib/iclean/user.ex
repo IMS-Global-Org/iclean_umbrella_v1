@@ -10,6 +10,7 @@ defmodule IClean.User do
     field :encrypted_password, :string
     field :permissions, {:array, :string}
     field :types, {:array, :string}
+    field :active, :boolean
 
     many_to_many :addresses, IClean.Address, join_through: "users_addresses"
 
@@ -19,7 +20,7 @@ defmodule IClean.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:email, :encrypted_password, :types, :permissions])
+    |> cast(attrs, [:email, :encrypted_password, :types, :permissions, :active])
     |> validate_required([:email, :encrypted_password, :types, :permissions])
     |> validate_subset(:types, @types)
     |> validate_subset(:permissions, @permissions)
