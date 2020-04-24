@@ -6,6 +6,7 @@ import SectionsMenu from './admin/SectionsMenu'
 
 // Apps
 import ManageUsers from './admin/ManageUsers'
+import EditUser from './admin/EditUser'
 
 const Admin = ({...rest}) => {
 
@@ -20,6 +21,7 @@ const Admin = ({...rest}) => {
           <Segment>
             <Switch>
               <Route exact path='/admin/manage_users' component={ManageUsers} />
+              <Route exact path='/admin/manage_users/:id' component={EditUser} />
             </Switch>
           </Segment>
         </Grid.Column>

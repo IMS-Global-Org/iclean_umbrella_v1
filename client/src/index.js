@@ -14,18 +14,16 @@ import Public from './apps/Public';
 import Admin from './apps/Admin'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        {/** Place App Routes Here */}
-        <Switch>
-          <Route exact path='/' component={Public} />
-          <Route path='/admin' component={Admin} />
-          <Route component={Public} />
-        </Switch>
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <BrowserRouter>
+      {/** Place App Routes Here */}
+      <Switch>
+        <Route exact path='/' component={Public} />
+        <Route path='/admin' component={Admin} />
+        <Route component={Public} />
+      </Switch>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 

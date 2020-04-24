@@ -27,4 +27,5 @@ defmodule IClean.User do
 
   def types, do: @types
   def permissions, do: @permissions
+
 end

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Table, Checkbox } from 'semantic-ui-react'
-import { Block } from '../../iclean-ui'
 import { indexUsers } from '../../reducers/users'
-import { capitalize } from 'lodash'
+import CheckboxCollectionForm from './CheckboxCollectionForm'
+import DeactivateUser from './DeactivateUser'
 
 const defaults = {
   users: [],
@@ -14,8 +14,6 @@ const defaults = {
 
 const ManageUsers = ({users, types, permissions, dispatch, ...rest}) => {
   const [state, setState] = useState({...defaults})
-
-  const checkboxStyle = { marginRight: '1rem' }
 
   const loadUsers = () => {
     if(!state.users || state.users.length <= 0){
@@ -54,54 +52,32 @@ const ManageUsers = ({users, types, permissions, dispatch, ...rest}) => {
         <Table.Body key={index}>
           <Table.Row>
             <Table.Cell collapsing>
-              <Checkbox slider />
+              <DeactivateUser user={user} />
             </Table.Cell>
             <Table.Cell>
               {user.email}
             </Table.Cell>
             <Table.Cell>
-              {renderUserTypes(user)}
+              <CheckboxCollectionForm 
+                user={user}
+                forSet='types'
+                inputElems={state.types}
+                inputValues={user.types}
+              />
             </Table.Cell>
             <Table.Cell>
-              {renderUserPermissions(user)}
+              <CheckboxCollectionForm 
+                user={user}
+                forSet='permissions'
+                inputElems={state.permissions}
+                inputValues={user.permissions}
+              />
             </Table.Cell>
           </Table.Row>
         </Table.Body>
       ))
     }
   }
-
-  const renderUserTypes = (user) => {
-    const { types } = state
-    if(types && types.length > 0){
-      const checkboxes = types.map((type, index) => (
-        <Checkbox
-          key={index}
-          style={checkboxStyle}
-          label={capitalize( type )}
-          checked={isChecked(user.types, type)}
-        />
-      ))
-      return <Block>{checkboxes}</Block>
-    }
-  }
-
-  const renderUserPermissions = (user) => {
-    const { permissions } = state
-    if(permissions && permissions.length > 0) {
-      const checkboxes = permissions.map((permission, index) => (
-        <Checkbox 
-          key={index}
-          style={checkboxStyle}
-          label={capitalize(permission)}
-          checked={isChecked(user.permissions, permission)}
-        />
-      ))
-      return <Block>{checkboxes}</Block>
-    }
-  }
-
-  const isChecked = (itemSet, item) => itemSet.includes(item)
 
   return (
     <Table compact celled definition>

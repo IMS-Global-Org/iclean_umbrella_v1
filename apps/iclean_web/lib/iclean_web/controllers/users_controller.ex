@@ -11,32 +11,35 @@ defmodule ICleanWeb.UsersController do
       types: u.types, 
       permissions: u.permissions
     })
-    IO.inspect users
+
     json(conn, %{ 
       users: users, 
-      types: IClean.User.types,
-      permissions: IClean.User.permissions,
+      types: User.types,
+      permissions: User.permissions,
     })
   end
 
   def update(conn, params) do
-    user = Repo.get(User, params.id)
-    user = User.changeset(user, params)
-    case Repo.update(user) do
+    update = User
+      |> Repo.get(get_in(params, ["id"]))
+      |> Repo.preload(:addresses)
+      |> User.changeset(get_in(params, ["user"]))
+      |> Repo.update
+
+    case update do
       {:ok, updated_user} ->
-        json(conn, updated_user)
+        json(conn, map(updated_user))
       {:error, changeset} ->
         json(conn, %{ errors: changeset.errors })
     end
   end
 
-  def delete(conn, params) do
-    user = Repo.get(User, params.id)
-    case Repo.delete(user) do 
-      {:ok, deleted_user} ->
-        json(conn, deleted_user)
-      {:error, changeset} ->
-        json(conn, %{ errors: changeset.errors })
-    end
+  defp map(user) do
+    %{
+      id: user.id,
+      email: user.email,
+      types: user.types,
+      permissions: user.permissions,
+    }
   end
 end
