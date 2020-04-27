@@ -5,6 +5,9 @@ import { Provider } from 'react-redux'
 import store from './store'
 import * as serviceWorker from './serviceWorker';
 
+// Authentication
+import AuthenticateUser from './auth/AuthenticateUser'
+
 // Style Sheets
 import 'semantic-ui-css/semantic.min.css'
 import './index.css';
@@ -12,16 +15,20 @@ import './index.css';
 // Apps
 import Public from './apps/Public';
 import Admin from './apps/Admin'
+import User from './apps/User'
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      {/** Place App Routes Here */}
-      <Switch>
-        <Route exact path='/' component={Public} />
-        <Route path='/admin' component={Admin} />
-        <Route component={Public} />
-      </Switch>
+      <AuthenticateUser>
+        {/** Place App Routes Here */}
+        <Switch>
+          <Route exact path='/' component={Public} />
+          <Route path='/admin' component={Admin} />
+          <Route path='/user/' component={User} />
+          <Route component={Public} />
+        </Switch>
+      </AuthenticateUser>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

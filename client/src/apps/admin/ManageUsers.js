@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Table, Checkbox } from 'semantic-ui-react'
+import { Table } from 'semantic-ui-react'
 import { indexUsers } from '../../reducers/users'
 import CheckboxCollectionForm from './CheckboxCollectionForm'
 import DeactivateUser from './DeactivateUser'

@@ -4,7 +4,8 @@
               {description,"iclean"},
               {modules,['Elixir.IClean','Elixir.IClean.Address',
                         'Elixir.IClean.Application','Elixir.IClean.DataCase',
-                        'Elixir.IClean.Repo','Elixir.IClean.User']},
+                        'Elixir.IClean.Profile','Elixir.IClean.Repo',
+                        'Elixir.IClean.User']},
               {registered,[]},
               {vsn,"0.1.0"},
               {mod,{'Elixir.IClean.Application',[]}}]}.

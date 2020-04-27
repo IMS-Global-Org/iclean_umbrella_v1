@@ -13,6 +13,7 @@ defmodule IClean.User do
     field :active, :boolean
 
     many_to_many :addresses, IClean.Address, join_through: "users_addresses"
+    has_one :profile, IClean.Profile
 
     timestamps()
   end
