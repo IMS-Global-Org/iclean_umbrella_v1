@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router-dom'
 
 import Header from './public/Header'
 import Welcome from './public/Welcome'
+import Login from './public/Login'
+import Register from './public/Register'
 
 const Public = ({...rest}) => {
   return (
@@ -10,6 +12,8 @@ const Public = ({...rest}) => {
       <Header />
       <Switch>
         <Route exact path='/' component={Welcome} />
+        <Route exact path='/public/login' component={Login} />
+        <Route exact path='/public/register' component={Register} />
         <Route component={Welcome} />
       </Switch>
     </>

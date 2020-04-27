@@ -6,12 +6,12 @@ const LoginLogout = ({active, ...rest}) => {
   return (
     <>
       <Menu.Item
+        as={Link}
+        to='/public/login'
         name='login'
         active={active === 'login'}
       >
-        <Link to='/login'>
-          Login
-        </Link>
+        Login
       </Menu.Item>
     </>
   )
